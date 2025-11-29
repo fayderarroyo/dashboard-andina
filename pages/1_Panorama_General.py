@@ -43,8 +43,10 @@ if df is not None:
     if selected_year == "Todos":
         # Multi-line chart: X=Month, Y=Value, Color=Year
         df_filtered['año'] = df_filtered['fecha'].dt.year
-        df_filtered['mes'] = df_filtered['fecha'].dt.month_name(locale='es_ES') # Requires locale or just month number
-        # Fallback for locale if not set or windows specific issues, let's use month number or custom map
+        # Remove locale dependency to avoid errors on cloud
+        # df_filtered['mes'] = df_filtered['fecha'].dt.month_name(locale='es_ES') 
+        
+        # Manual map for Spanish months
         month_map = {1: 'Ene', 2: 'Feb', 3: 'Mar', 4: 'Abr', 5: 'May', 6: 'Jun', 
                      7: 'Jul', 8: 'Ago', 9: 'Sep', 10: 'Oct', 11: 'Nov', 12: 'Dic'}
         df_filtered['mes_num'] = df_filtered['fecha'].dt.month
