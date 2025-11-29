@@ -2,7 +2,8 @@ import pandas as pd
 import os
 
 # Define data directory
-DATA_DIR = r"C:\Users\Fayder Arroyo Herazo\Desktop\Estadistica Especializacion\Electiva1\proyecto final electiva"
+# Use relative path for deployment compatibility
+DATA_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def load_data():
     """
